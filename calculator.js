@@ -16,14 +16,26 @@ function power(num1, num2) {
 function mod(num1, num2) {
   return num1 % num2;
 }
-function sqrt(num) {
-  return num ** 0.5;
+function sqrt(num1) {
+  return num1 ** 0.5;
 }
+function factorialize(num1) {
+  let total = num1;
+
+  // if (num1 === 0 || num1 === 1) return 1; 
+  
+  while (num1 > 1) { 
+    num1--;
+    total = total * num1;
+  };
+  return total;
+}
+
 
 function calculate(expressions) {
 
   const tokens = expressions.split(' ');
-
+  
   let num1;
   let operator;
   let num2;
@@ -34,18 +46,19 @@ function calculate(expressions) {
     num2 = Number(tokens[2]);
     if (Number.isNaN(num1) || Number.isNaN(num2)) {
       return('THAT IS NOT A NUMBER');
-      ;
+      
     }
-  } if (tokens.length === 2) {
+
+  } else if (tokens.length === 2) {
     operator = tokens[0];
     num1 = Number(tokens[1]);
+
     if (Number.isNaN(num1)) {
       return('THAT IS NOT A NUMBER DING BAT');
-      ;
-    }
-    else {
+    } 
+
+  } else {
       return('Invalid expression! Try again.');
-    }
   
   }
 
@@ -58,26 +71,36 @@ function calculate(expressions) {
   //   ;
   // }
 
+
   if (operator === '+'){
     return add(num1, num2);
   }
-   if (operator === '-'){
-      return subtract(num1, num2);
-    }
-      if (operator === '/'){
-        return divide(num1, num2);
-      }  if (operator === '^'){
-        return power(num1, num2);
-      } if (operator === '%') {
-        return mod(num1, num2);
-      } if (operator === 'sqrt') {
-        return sqrt(num1, num2);
-      }
-      alert('Unrecognized operator.');
+  if (operator === '-'){
+    return subtract(num1, num2);
+  }
+  if (operator === '*'){
+    return multiply(num1, num2);
+  }
+  if (operator === '/'){
+    return divide(num1, num2);
+  }  
+  if (operator === '^'){
+    return power(num1, num2);
+  } 
+  if (operator === '%') {
+    return mod(num1, num2);
+  } 
+  if (operator === 'sqrt') {
+    return sqrt(num1);
+  } 
+  if (operator === '!') {
+    return factorialize(num1);
+  }
+  alert('Unrecognized operator.');
 }
 
 
-
+console.log(calculate("! 5"))
 
 
 
