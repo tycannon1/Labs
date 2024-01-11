@@ -100,7 +100,7 @@ function calculate(expressions) {
 }
 
 
-console.log(calculate("! 5"))
+
 
 
 
